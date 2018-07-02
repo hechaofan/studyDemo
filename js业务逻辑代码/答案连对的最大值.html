@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>答案连对最大值</title>
+</head>
+<body>
+
+</body>
+<script>
+  var arr= [true,true,false,true,true,true,true,]
+  function maxRight(arr) {
+    if (!Array.isArray(arr) || arr.length ===0) {
+      return 0
+    }
+    var nowArr= 0,maxArr=0
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i]){
+          nowArr++
+      }else {
+        if(nowArr>maxArr){
+            maxArr = nowArr
+        }
+        nowArr = 0
+      }
+      
+    }
+    if (nowArr>maxArr) {
+      maxArr = nowArr
+    }
+    return maxArr
+  }
+  console.log(maxRight(arr));
+</script>
+</html>

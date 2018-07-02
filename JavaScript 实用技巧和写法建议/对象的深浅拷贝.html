@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象的深浅拷贝</title>
+</head>
+<body>
+
+</body>
+<script>
+  //浅拷贝
+  var a = {name:'哈哈',age:18}
+  var b = a
+  b.name = '呵呵'
+  console.log(a.name);
+  //假-深拷贝
+  var c = {name:'何超凡',sex:'男'}
+  var d = Object.assign({},c)
+  d.sex = '女'
+  console.log(c.sex);
+  //真-深拷贝
+  var arr = [{a:1,b:2}]
+  var newArr = JSON.parse(JSON.stringify(arr))
+  newArr[0].a = 3
+  console.log(newArr);
+  console.log(arr);
+  console.log(arr[0].a);
+</script>
+</html>

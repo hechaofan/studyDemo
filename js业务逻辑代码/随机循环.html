@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>随机循环</title>
+</head>
+<body>
+
+</body>
+<script>
+  var tipList=['提示1','提示2','提示3','提示4','提示5','提示6','提示7','提示8','提示9'];
+  var tipListShow=[];
+  tipListShow = Object.assign([],tipList)
+  var timer = null
+  function play() {
+    //Math.floor(Math.random() * tipListShow.length)
+    console.log(tipListShow.splice(Math.floor(Math.random() * tipListShow.length), 1)[0]);
+    if (tipListShow.length == 0) {
+      console.log('加载完一轮')
+      tipListShow = Object.assign([],tipList)
+    }
+    timer = setTimeout(function () {
+      play()
+    },1000)
+  }
+  play()
+</script>
+</html>

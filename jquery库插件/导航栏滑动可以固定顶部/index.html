@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>testmenu</title>
+<style type="text/css">
+*{margin:0;padding: 0}
+body{height:3900px;}
+#lipsum{width:690px;margin:30px auto;color:#34495e;text-align:justify}
+img{float:left;margin:0 10px 10px 0;}
+.yapiskan{
+	height: 80px;
+	background-color:#e74c3c;
+	color:white;
+	font-size:24px;
+	width: 100%;
+	text-align:center;
+	transition:top .5s;
+}
+.yya{
+	position:fixed;
+	left:0;
+	top:0;
+}
+.gizle{top:-90px;}
+.sabit{top:0;z-index:9999;}
+.toper{height: 400px;width: 100%;background-color: #D0EAF1;}
+</style>
+</head>
+<body>
+	<div class="toper">
+		<p>bulabulabulabulabula this is for myself</p>
+	</div>
+	<div class="yapiskan">hello this is a menu test</div>
+</body>
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var h1 = 400;
+	var h2 = 480;
+	var ss = $(document).scrollTop();
+	$(window).scroll(function(){
+		var s = $(document).scrollTop();
+
+		if(s< h1){
+			$('.yapiskan').removeClass('yya');
+		}if(s > h1){
+			$('.yapiskan').addClass('yya');
+		}if(s > h2){
+			$('.yapiskan').addClass('gizle');
+			if(s > ss){
+				$('.yapiskan').removeClass('sabit');
+			}else{
+				$('.yapiskan').addClass('sabit');
+			}
+			ss = s;
+		}
+
+
+	});
+	
+});
+</script>
+</html>

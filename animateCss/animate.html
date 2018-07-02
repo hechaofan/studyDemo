@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="animate.css">
+  <style>
+    *{
+      padding: 0px;
+      margin: 0px;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 1000px;
+      left: 0px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body style="height:1500px">
+<div class="box">
+  <p>我是</p>
+  <p>用户</p>
+  <p>用户</p>
+  <p>用户</p>
+</div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+
+  var h =document.documentElement.clientHeight - document.querySelector('.box').clientHeight
+  //console.log(h)
+  $(window).scroll(function () {
+    //top 元素到文档的高度
+    var top = $('.box').offset().top
+    //console.log(top)
+    //scrolltop 内容滚动高度
+    var scrolltop = $(document).scrollTop()
+    //console.log(scrolltop)
+    //var screentop 元素到屏幕高度
+    var screentop = top-scrolltop
+    //console.log(screentop)
+    if(screentop<h){
+      var tops = document.querySelectorAll('p')
+      for (var i = 0; i < tops.length; i++) {
+        tops[i].className = 'animated fadeInUp'
+
+      }
+    }
+
+
+
+  })
+</script>
+</html>

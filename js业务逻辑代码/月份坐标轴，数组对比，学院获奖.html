@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  //todo 学院获奖
+  /* //todo 需求
+  统计学生申请优秀毕业生
+  1自己申请过的
+  2复合要求的（成绩优秀，拿过奖学金，获得过三好学生三个条件满足两个）*/
+  //数组去重
+  //var arr1 = [1,2,3,2,1]
+  function removeRepeatArr(arr) {
+     return [...new Set(arr)]
+  }
+  //一个数据在数组中出现的次数
+  function getEleCount(obj,ele) {
+    let num = 0
+    for (var i = 0,len=obj.length; i < len; i++) {
+      if (ele === obj[i]){
+        num ++;
+      }
+    }
+    return num
+  }
+  let studentList = [
+    {
+      name: 'aa',
+      isApply: false,
+      id: 1
+    },
+    {
+      name: 'bb',
+      isApply: true,
+      id: 2
+    },
+    {
+      name: 'cc',
+      isApply: true,
+      id: 3
+    }
+  ];
+  //过滤申请学生
+  let _student = studentList.filter(value => value.isApply)
+  //将复合条件的学生id，添加到accord中，查找出现id个数，来过滤复合条件的学生
+  let isExcellent = [1, 2, 3, 4, 5], isScholarship = [4, 2, 5, 6, 2, 1, 2], isThreeGood = [2, 1, 4, 52, 36], accord = [];
+  accord = [...removeRepeatArr(isExcellent),...removeRepeatArr(isScholarship),...removeRepeatArr(isThreeGood)]
+  console.log(accord);
+  let accordStudent = []
+  for (let i = 0; i < _student.length; i++) {
+    if(getEleCount(accord,_student[i].id)>=2){
+      accordStudent.push(_student[i])
+    }
+
+  }
+  console.log(accordStudent);
+
+  //准备临时数组
+  function compareArr(arr1,arr2){
+    var result=[],arr;
+    //遍历
+    for(var i=0;i<arr1.length;i++){
+      //根据arr1[i]的值，查找arrayB，如果arr2中的有满足条件（arrayB中的对象，有key值等于arrayA[i]）的项，就会返回满足条件的项，否则返回underfind;
+      arr=arr2.find(function(val){return val.key===arr1[i]});
+      //如果arr不是undefind，就会添加arr，否则添加{key:arrayA[i],num1:'0',num2:'0',num3:'0',tot:'0'}。
+      arr?result.push(arr):result.push({key:arrayA[i],num1:'0',num2:'0',num3:'0',tot:'0'});
+    }
+  }
+
+  //todo 数组对比
+  /* todo 需求
+  1、如果arryA中有a，arryB中没有，那么在arryB中增加一个key值为a的boj，且其他属性值可均为'0';如下： {key:'a',num1:'0',num2:'0',num3:'0',tot':0'}
+  2、如果arryA中有a，arryB中也有key值为a的obj,那么arryB则不改变，并且该obj里的其他属性和属性值均不变;
+  3、如果在arryA中删除了a，那么arryB中key值为a的obj整个删掉。*/
+  var arrayA = ['a','b','c','e'];
+  var arrayB = [
+    {
+      key: 'd',
+      num1: '111',
+      num2: '222',
+      num3: '333',
+      tot:666
+    },{
+    key:'a',
+    num1:'1',
+    num2:'2',
+    num3:'3',
+    tot:'6'
+  },{
+    key:'b',
+    num1:'11',
+    num2:'22',
+    num3:'33',
+    tot:'66'
+  },{
+    key: 'c',
+    num1: '111',
+    num2: '222',
+    num3: '333',
+    tot:666
+  },];
+  console.log(compareArr(arrayA, arrayB));
+  function compareArr(arr1,arr2) {
+    var result = [],arr
+    for (let i = 0; i < arr1.length; i++) {
+      arr = arr2.find(value => value.key === arr1[i])
+      arr ? result.push(arr) : result.push({key: arr1[i],
+        num1: '0',
+        num2: '0',
+        num3: '0',
+        tot:0})
+
+    }
+    return result
+  }
+</script>
+</html>

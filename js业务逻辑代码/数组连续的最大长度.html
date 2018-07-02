@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数组连续的最大长度</title>
+</head>
+<body>
+
+</body>
+<script>
+  //假如有一个数组，下面这个数组最大的连续长度就是4——————8,9,10,11
+  var arr=[1,2,4,5,6,8,9,10,11,12];
+  console.log(countLen(arr));
+  //代码实现
+  function countLen(arr) {
+    //定义一个目前数组连续的长度，和数组连续的最大长度
+    var nowArr = 1,maxArr = 0
+    //判断是否为数组，数组为空
+    if(!Array.isArray(arr) || arr.length == 0){
+        return 0
+    }
+    for (var i = 1; i < arr.length; i++) {
+      //计算目前数组连续的长度
+      if(arr[i]-arr[i-1] === 1){
+          nowArr++
+      }else {
+        //目前数组连续的长度大于数组连续的最大长度就重新赋值给数组连续的最大长度
+        if (nowArr>maxArr) {
+          maxArr = nowArr
+        }
+        //使目前数组连续的长度重置
+        nowArr = 1
+      }
+    }
+    if(nowArr>maxArr){
+      maxArr = nowArr
+    }
+    return maxArr
+  }
+</script>
+</html>

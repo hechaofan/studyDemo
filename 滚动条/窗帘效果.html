@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    html,body{
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap{
+      width: 40px;
+      height: 100%;
+      background-color: gray;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+    .inner{
+      width: 40px;
+      height: 80px;
+      background-color: pink;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .content{
+      width: 100%;
+      background-color: red;
+      height: 0px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="content"></div>
+<div class="wrap">
+  <div class="inner"></div>
+</div>
+</body>
+<script>
+  var inner = document.querySelector('.inner');
+  var content = document.querySelector('.content');
+  var startY = 0;
+  var eleY = 0;
+
+
+  inner.onmousedown= function (event) {
+    startY = event.clientY;
+    eleY = inner.offsetTop;
+
+    document.onmousemove = function (event) {
+      var nowY = event.clientY;
+      var T = nowY-startY+eleY
+      if(T<0){
+        T = 0
+      }else if(T>document.documentElement.clientHeight-inner.clientHeight){
+        T = document.documentElement.clientHeight-inner.clientHeight
+      }
+      inner.style.top = T+ 'px';
+      content.style.height = T*(document.documentElement.clientHeight)/(document.documentElement.clientHeight-inner.clientHeight)+ 'px'
+    };
+
+    document.onmouseup = function () {
+      document.onmousemove=document.onmouseup=null
+    };
+    return false
+  }
+</script>
+</html>

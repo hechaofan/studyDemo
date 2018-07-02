@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .wrap{
+      position: relative;
+      width: 194px;
+      height: 336px;
+      margin: 200px auto;
+      overflow: hidden;
+    }
+    .bg,.can{
+      position: absolute;
+      left: 0px;
+    }
+    .bg{
+      top: 11px;
+    }
+    .bg > img {
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bg">
+    <img src="./img/coke_bg.jpg" alt="">
+    <img src="./img/coke_bg.jpg" alt="">
+  </div>
+  <div class="can">
+    <img src="./img/coke_can.png" alt="">
+  </div>
+</div>
+</body>
+<script>
+    var bg = document.querySelector('.bg');
+
+    var bgwidth=bg.offsetWidth;
+
+    bg.style.width = bgwidth*2 + 'px' ;
+
+    var can = document.querySelector('.can')
+
+    var canwidth=can.offsetWidth;
+
+    var dis = 0 ;
+    setInterval(function () {
+      dis--;
+      if(Math.abs(dis) > bgwidth){
+        dis = 0
+      }
+      bg.style.transform = 'translateX('+ dis+'px)'
+    },20)
+
+</script>
+</html>

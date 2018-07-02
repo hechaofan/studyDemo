@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>将对象数据转化为数组数据</title>
+</head>
+<body>
+
+</body>
+<script>
+  //todo 发送请求返回一个含有商品信息的对象,转化为数组，渲染到页面
+  //发送请求 http://example.com?proId=100072236-8
+  var searchTag=[
+    {label:'产品编码',value:'100072236-8'},
+    {label:'产品名称',value:'甘油'}
+  ]
+  //返回的数据
+  var searchParam={proId:'100072236-8',proName:'甘油'}
+  var searchTag = []
+  var searchText = {proId:'商品id',proName:'商品名称'}
+  Object.keys(searchParam).forEach(item => {
+    searchTag.push({
+      label:searchText[item],
+      key:item,
+      value:searchParam[item]
+    })
+  })
+  console.log(searchTag);
+
+
+</script>
+</html>

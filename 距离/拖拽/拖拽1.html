@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .box{
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+    .box1{
+      position: absolute;
+      left: 300px;
+      top: 300px;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+</body>
+<script>
+  var box = document.querySelector('.box') ;
+  var box1 = document.querySelector('.box1') ;
+  var startpoint = {left:0,top:0};
+  var elementpoint = {left:0,top:0}
+  var disX,disY
+  box.onmousedown = function (event) {
+    //启始元素的距离
+    elementpoint.left = box.offsetLeft;
+    elementpoint.top = box.offsetTop;
+    //鼠标距离
+    startpoint.left = event.clientX;
+    startpoint.top = event.clientY;
+    disX = startpoint.left-elementpoint.left
+    disY = startpoint.top-elementpoint.top
+    //开启全局捕获只有ie8有用
+//			if(box.setCapture){
+//				box.setCapture();
+//			};
+    //todo 优化
+    box.setCapture && box.setCapture();
+
+    document.onmousemove = function (event) {
+      var movepoint = {left:0,top:0}
+      //鼠标移动距离
+      movepoint.left = event.clientX;
+      movepoint.top = event.clientY;
+      //todo 范围限制和吸附效果
+      var L = movepoint.left-disX
+      var T = movepoint.top-disY
+      if (L<50){
+        L = 0
+      }else if(L > document.documentElement.clientWidth-box.clientWidth-50){
+        L = document.documentElement.clientWidth-box.clientWidth
+      }
+      if (T<50){
+        T = 0
+      }else if(T > document.documentElement.clientHeight-box.clientHeight-50){
+        T = document.documentElement.clientHeight-box.clientHeight
+      }
+      box.style.left = L+ 'px'
+      box.style.top = T+ 'px'
+      //九宫格检测碰撞 getBoundingClientRect()获取元素到浏览器的距离
+
+      var T1 = box.getBoundingClientRect().top;
+      var B1 = box.getBoundingClientRect().bottom;
+      var L1 = box.getBoundingClientRect().left;
+      var R1 = box.getBoundingClientRect().right;
+
+      var T2 = box1.getBoundingClientRect().top;
+      var B2 = box1.getBoundingClientRect().bottom;
+      var L2 = box1.getBoundingClientRect().left;
+      var R2 = box1.getBoundingClientRect().right;
+
+      if(R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2){
+        //正常情况
+        box1.style.background = 'yellowgreen';
+      }else{
+        box1.style.background = 'greenyellow'
+      }
+
+
+    };
+    document.onmouseup = function () {
+      document.onmousemove = null ;
+      document.onmouseup = null ;
+    }
+    //取消系统默认行为(ie8不支持)
+    return false
+  }
+</script>
+</html>

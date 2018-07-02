@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /*元素开启定位*/
+    #box{
+      position:absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background: deeppink;
+    }
+    #others{
+      position: absolute;
+      top: 250px;
+      left: 500px;
+      width: 200px;
+      height: 200px;
+      background: yellowgreen;
+
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<div id="others">
+
+</div>
+</body>
+<script type="text/javascript">
+  var box = document.querySelector('#box');
+  var others = document.querySelector('#others');
+
+  //元素的初始位置 + （鼠标距离差）
+
+  //定义元素初始位置
+  var elementPoint = {left:0,top:0};
+  //定义鼠标初始位置
+  var startPonit = {left:0,top:0};
+
+
+  box.onmousedown = function(event){
+    var event = event || window.event;
+
+    //元素初始位置
+    //offsetLeft  元素左边距离父元素之间的距离
+    elementPoint.left = box.offsetLeft;
+    elementPoint.top = box.offsetTop;
+
+    //鼠标初始位置
+    startPonit.left = event.clientX;
+    startPonit.top = event.clientY;
+
+    //开启全局捕获
+//			if(box.setCapture){
+//				box.setCapture();
+//			};
+    box.setCapture && box.setCapture();
+
+    document.onmousemove = function(event){
+      var event = event || window.event;
+
+      //鼠标当前位置
+      var nowPonit = {left:0,top:0};
+
+      nowPonit.left = event.clientX;
+      nowPonit.top = event.clientY;
+
+      //（鼠标距离差）
+      var disX = nowPonit.left - startPonit.left;
+      var disY = nowPonit.top - startPonit.top;
+
+      //元素的初始位置 + （鼠标距离差）
+      var L = elementPoint.left + disX;
+      var T = elementPoint.top + disY;
+
+      //范围的限定
+
+      if(T < 50){
+        T = 0;
+      }else if(T > document.documentElement.clientHeight - box.offsetHeight-50){
+        T = document.documentElement.clientHeight - box.offsetHeight;
+      };
+
+      if(L < 50){
+        L = 0;
+      }else if(L > document.documentElement.clientWidth - box.offsetWidth -50){
+
+        L = document.documentElement.clientWidth - box.offsetWidth;
+      };
+
+      box.style.left = L + 'px';
+      box.style.top = T + 'px';
+
+      //九宫格检测碰撞
+
+      var T1 = box.getBoundingClientRect().top;
+      var B1 = box.getBoundingClientRect().bottom;
+      var L1 = box.getBoundingClientRect().left;
+      var R1 = box.getBoundingClientRect().right;
+
+      var T2 = others.getBoundingClientRect().top;
+      var B2 = others.getBoundingClientRect().bottom;
+      var L2 = others.getBoundingClientRect().left;
+      var R2 = others.getBoundingClientRect().right;
+
+      if(R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2){
+        //正常情况
+        others.style.background = 'yellowgreen';
+      }else{
+        others.style.background = 'greenyellow'
+      }
+
+
+    };
+    document.onmouseup = function(){
+      document.onmousemove = document.onmouseup = null;
+
+      //释放全局捕获
+//				if(document.releaseCapture){
+//					document.releaseCapture();
+//				};
+      document.releaseCapture && document.releaseCapture();
+
+    };
+
+    //取消系统默认行为(ie8不支持)
+    return false;
+
+  };
+
+
+
+</script>
+</html>

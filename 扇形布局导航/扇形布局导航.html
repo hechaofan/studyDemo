@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .wrap{
+      position: fixed;
+      right: 0px;
+      bottom: 0px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+
+    }
+    .home{
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 50px;
+      height: 50px;
+      z-index: 10;
+      transition: 1s;
+    }
+    .home>img {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    .list{
+      position: relative;
+      top: 4px;
+      left: 4px;
+    }
+    .list img {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      border-radius: 50%;
+      /*transition: 1s;*/
+    }
+  </style>
+</head>
+<body>
+    <div class="wrap">
+      <div class="home">
+        <img src="img/home.png" alt="">
+      </div>
+      <div class="list">
+        <img src="img/clos.png" alt="">
+        <img src="img/full.png" alt="">
+        <img src="img/open.png" alt="">
+        <img src="img/prev.png" alt="">
+        <img src="img/refresh.png" alt="">
+      </div>
+    </div>
+</body>
+<script>
+  var home = document.querySelector('.home') ;
+  var listimg = document.querySelectorAll('.list img');
+
+  /*todo  用this代替listimg[i]否则是最后一个*/
+  for (var i = 0; i < listimg.length; i++) {
+    listimg[i].onclick = function () {
+      this.style.transform = 'scale(2)';
+      this.style.transition = '0.5s';
+      this.style.opacity = '0.3' ;
+
+      /*todo  transitionEnd 检测过渡结束
+       */
+
+      this.addEventListener('transitionEnd',fun);
+      /*todo 解决兼容问题*/
+      this.addEventListener('webkitTransitionEnd',fun);
+      function fun() {
+        this.style.transform = 'scale(1)';
+        /*this.style.transition = '0.5s';*/
+        this.style.opacity = '1' ;
+
+        //todo 解绑  移动端需要
+        this.removeEventListener('transitionEnd',fun);
+        this.removeEventListener('webkitTransitionEnd',fun);
+      }
+    }
+
+  }
+  var flag = true ;
+  var c = 150 ;
+  home.onclick = function () {
+    if(flag){
+      for (var i = 0; i < listimg.length; i++) {
+        listimg[i].style.transform = 'rotate(-720deg)';
+        /*todo  '0.5s '过渡拼串要加一个空格号*/
+        listimg[i].style.transition = '0.5s ' + 0.1*i + 's';
+
+        listimg[i].style.left = -getPoint(c,90*i/(listimg.length-1)).left + 'px';
+        listimg[i].style.top = -getPoint(c,90*i/(listimg.length-1)).top + 'px';
+
+      };
+        home.style.transform = 'rotate(-360deg)';
+    }else {
+      for (var i = 0; i < listimg.length; i++) {
+        listimg[i].style.transform = 'rotate(0deg)';
+        listimg[i].style.transition = '0.5s ' + 0.1*(listimg.length-1-i) + 's';
+
+        listimg[i].style.left = 0;
+        listimg[i].style.top = 0;
+
+      };
+        home.style.transform = 'rotate(360deg)';
+    };
+    flag = !flag ;
+
+  };
+  function getPoint (c,deg) {
+    var left = c * Math.sin(deg*Math.PI/180);
+    var top = c * Math.cos(deg*Math.PI/180);
+    return {left:left,top:top}
+  }
+</script>
+</html>

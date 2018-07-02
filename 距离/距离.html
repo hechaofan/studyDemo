@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px ;
+    }
+  </style>
+</head>
+<body style="height: 10000px">
+    <div class="box"></div>
+</body>
+<script>
+  var box = document.querySelector('.box');
+  /*todo offsetLeft 元素到父元素的距离*/
+  var offsetLeft = box.offsetLeft
+  /*todo 元素的高度*/
+  var clientHeight= box.clientHeight
+  console.log(offsetLeft)
+  console.log(clientHeight)
+  box.onclick = function (event) {
+    /*todo 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。*/
+    var offsetX = event.offsetX
+    /* todo 鼠标指针到浏览器页面的水平坐标(左)*/
+    var clientX = event.clientX
+    console.log(offsetX)
+    console.log(clientX)
+    console.log(offsetLeft+offsetX )
+  }
+  //todo 浏览器窗口的大小（最干净的视口）
+  var width = document.documentElement.clientWidth;
+
+</script>
+</html>

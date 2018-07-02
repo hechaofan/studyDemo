@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>保留小数后几位</title>
+</head>
+<body>
+
+</body>
+<script>
+  var a= 1.2356.toFixed(2)
+  console.log(typeof a);
+  console.log(a);
+  a =+ a
+  console.log(typeof a);
+  console.log(a);
+  console.log(typeof !!'');
+  var arr100=[], arr10000=[];
+  //todo 缓存变量
+  for(var i=0;i<100;i++){
+    arr100.push(i)
+  }
+  for(var i=0;i<10000;i++){
+    arr10000.push(i)
+  }
+  //缓存情况
+  function testCache(arr){
+    console.time();
+    for(var i=0,len=arr.length;i<len;i++){
+
+    }
+    console.timeEnd()
+  }
+  //不缓存情况
+  function testNoCache(arr){
+    console.time();
+    for(var i=0;i<arr.length;i++){
+
+    }
+    console.timeEnd()
+  }
+  testCache(arr100)//     default: 0.0029296875ms
+  testCache(arr10000)//   default: 0.098876953125ms
+  testNoCache(arr100)//   default: 0.025146484375ms
+  testNoCache(arr10000)// default:  0.19775390625ms
+</script>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="reset.css">
+  <style>
+    /*TODO 头部*/
+    body{
+      font-size: 12px;
+    }
+    .header{
+      width: 980px;
+      height: 39px;
+      margin: 20px auto 0px;
+    }
+    .log{
+      width: 179px;
+      height: 39px;
+    }
+    .fl{
+      float: left;
+    }
+    .fr{
+      float: right;
+    }
+    .pa{
+      position: absolute;
+    }
+    .search{
+      width: 195px;
+      height: 30px;
+      border: 1px solid #ECECEC;
+    }
+    .search input[type='text']{
+      height: 30px;
+      width: 165px;
+      float: left;
+    }
+    .search input[type='button']{
+      height: 30px;
+      width: 30px;
+      float: right;
+      background: url("images/search2.jpg");
+    }
+    /* TODO 导航*/
+    .nav{
+      height: 55px;
+      background: url("images/nav_bg.png");
+      border-top: 1px solid #bbb;
+    }
+    .nav-con{
+      width: 980px;
+      height: 55px;
+      margin: 0px auto;
+    }
+    .nav-con li{
+      float: left;
+    }
+    .nav-con li a{
+      display: inline-block;
+      height: 55px;
+      line-height: 55px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #000;
+      padding: 0 30px;
+      background: url("images/nav_bg-line.png") no-repeat right;
+    }
+    .nav-con li a:hover{
+    color: yellowgreen;
+    }
+    /*todo banner*/
+    .banner{
+      margin: 0 auto;
+      width: 980px;
+      height: 597px;
+    }
+    .banner img{
+      width: 100%;
+      height: 100%;
+    }
+    /*todo 信息部分*/
+    .mes{
+      height: 29px;
+      border-top: 1px solid #EFEFEF;
+      border-bottom: 1px solid #EFEFEF;
+      background: #FBFBFB;
+      margin-bottom: 12px;
+    }
+    .mes-con{
+      width: 980px;
+      height: 29px;
+      margin: 0px auto;
+
+    }
+    .mes-con-l{
+      font-size: 12px;
+      height: 29px;
+      line-height: 29px;
+    }
+    .mes-con-r{
+      margin-top: 7px;
+    }
+    .mes-con-r img{
+      margin-right: 2px;
+    }
+    /*todo 新闻*/
+    .news{
+      margin: 0 auto;
+      width: 980px;
+      overflow: hidden;
+    }
+    .new-left,.new-cen,.new-right{
+      border: 1px solid #E4E4E4;
+    }
+    .new-left{
+      width: 310px;
+      height: 224px;
+      position: relative;
+    }
+    .pro{
+      margin: 10px 0 0 5px;
+      color:yellowgreen;
+    }
+    .pro img{
+      vertical-align: top;
+    }
+    .pro-pic{
+      left:60px ;
+      top:60px ;
+    }
+    .l-sj{
+      left: 23px;
+      top: 120px;
+    }
+    .r-sj{
+      right:23px;
+      top: 120px;
+    }
+    .new-cen{
+      height: 224px;
+      width: 373px ;
+      margin-left: 10px;
+    }
+    .newslist-list{
+      margin: 15px 0 0 20px;
+    }
+    .newslist-list li{
+      height: 27px;
+      border-bottom:1px dashed #DCDCDC;
+      line-height: 27px;
+    }
+    .ftcolor{
+      color: red;
+      font-size: 14px;
+    }
+    .new-right{
+      height: 224px;
+      width: 268px ;
+    }
+    .new-right p{
+      margin:0 0 10px 20px;
+    }
+    .sup{
+      margin: 20px 0 40px 20px;
+    }
+    .sup li{
+      height: 12px;
+      border-left: 3px solid #7AB800;
+      margin-top:10px;
+
+      padding-left:5px;
+    }
+    /*todo 尾部*/
+    .footer{
+      height: 221px;
+      background: #2D2D2D;
+    }
+    .footer-con{
+      margin: 0 auto;
+      width: 400px;
+      background: pink;
+      overflow: hidden;
+    }
+    .footer-con li{
+      width: 25%;
+      height: 30px;
+      float: left;
+      line-height: 30px;
+      text-align: center;
+    }
+
+
+
+  </style>
+</head>
+<body>
+<!--todo 头部-->
+  <div class="header">
+    <div class="log fl">
+      <img src="images/logo.jpg" alt="">
+    </div>
+    <div class="search fr">
+      <input type="text" placeholder="请输入...">
+      <input type="button">
+    </div>
+  </div>
+<!--TODO 导航-->
+  <div class="nav">
+    <div class="nav-con">
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">治疗时间</a></li>
+        <li><a href="#">俺是新手</a></li>
+        <li><a href="#">配件</a></li>
+        <li><a href="#">请问</a></li>
+        <li><a href="#">去玩儿法</a></li>
+      </ul>
+    </div>
+  </div>
+<!--todo banner-->
+  <div class="banner">
+    <img src="images/banner.jpg" alt="">
+  </div>
+<!--todo 信息部分-->
+  <div class="mes">
+    <div class="mes-con ">
+      <div class="mes-con-l fl">最新公告：尚合Aone智能手机入网证已获取工信部门审批下发。尚合官网</div>
+      <div class="mes-con-r fr">
+        <img src="images/zone.png" alt="">
+        <img src="images/weibo.png" alt="">
+        <img src="images/xinlang.png" alt="">
+        <img src="images/renren.png" alt="">
+      </div>
+    </div>
+  </div>
+<!--todo news-->
+  <div class="news">
+    <div class="new-left fl">
+      <div class="pro">
+        <img src="images/o.jpg" alt="">
+        <span>新品发布</span>
+      </div>
+      <div class="pro-pic pa">
+        <img src="images/home_hot_01.png" alt="">
+      </div>
+      <div class="l-sj pa">
+        <img src="images/left.png" alt="">
+      </div>
+      <div class="r-sj pa">
+        <img src="images/right.png" alt="">
+      </div>
+    </div>
+    <div class="new-cen fl">
+      <div class="pro">
+        <img src="images/o.jpg" alt="">
+        <span>新闻中心</span>
+      </div>
+      <ul class="newslist-list">
+        <li class="ftcolor">致歉公告</li>
+        <li>首批尚合Aonet已全部售馨!</li>
+        <li>【媒体报导】国产高性价比 尚合Aonet四核手机评测</li>
+        <li>我司产品已经通过了国家强制性产品3C认证</li>
+        <li>尚合Aone智能手机入网证已经获工信部门审批下发.</li>
+        <li>我司通过ISO9001:2008国际质量管理体系认证</li>
+      </ul>
+    </div>
+    <div class="new-right fr">
+      <div class="pro">
+        <img src="images/o.jpg" alt="">
+        <span>技术与支持</span>
+      </div>
+      <ul class="sup">
+        <li>售后服务</li>
+        <li>投诉与建议</li>
+        <li>联保网点</li>
+        <li>常见问题FAQ</li>
+      </ul>
+      <p>深圳市汇聚众合科技发展有限公司</p>
+      <p>服务热线：400-633-7922</p>
+    </div>
+  </div>
+<!--todo 尾部-->
+<div class="footer">
+  <div class="footer-con">
+    <ul>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+      <li><span>联系我们</span></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

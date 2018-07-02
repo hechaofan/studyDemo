@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用innerHTML添加元素</title>
+</head>
+<body>
+<ul>
+</ul>
+</body>
+<script>
+  //todo 在ul中添加li
+  var ul = document.querySelector('ul')
+  //createElement方式
+  console.time()
+  for (var i = 0; i < 10; i++) {
+    var li = document.createElement('li')
+    li.innerHTML=i
+    ul.appendChild(li)
+  }
+  console.timeEnd() //default: 0.259033203125ms
+  //使用innerHTML添加元素
+  console.time()
+  var _html= ''
+  for (var i = 0; i < 10; i++) {
+    _html += `<li>${i}</li>`
+
+  }
+  ul.innerHTML= _html
+  console.timeEnd() //default: 0.069091796875ms
+</script>
+</html>

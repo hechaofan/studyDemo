@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .wrap{
+      position: relative;
+      margin: 100px auto;
+      width: 300px;
+      height: 80px;
+      background-color: #AEB4D6;
+      text-align: center;
+      line-height: 80px;
+      text-transform: uppercase;
+      font-size: 50px;
+      font-weight: bold;
+      color: #EFEFEF;
+      transition: 1s;
+    }
+    .top{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0px;
+      height: 10px;
+      background-color: #AEB4D6;
+      transition: 1s;
+    }
+    .bottom{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0px;
+      height: 10px;
+      background-color: #AEB4D6;
+      transition: 1s;
+    }
+    .wrap:hover{
+      background-color: #EFEFEF;
+      color: #AEB4D6;
+    }
+    .wrap:hover .top,.wrap:hover .bottom{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"></div>
+  html5
+  <div class="bottom"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      padding: 0px;
+      margin: 0px;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+  <script src="transformCss.js"></script>
+</head>
+<body>
+<div class="box"></div>
+</body>
+<!--
+		rotate(360deg)       0
+		skew(45deg)
+		skewX(45deg)
+		skewY(45deg)
+
+		scale(.5)         1
+		scaleX(.5)
+		scaleY(.5)
+
+		translate(100px)        0
+		translateX(100px)
+		translateY(100px)
+	-->
+
+<script>
+  var box = document.querySelector('.box');
+  //写
+  transformCss(box,'translateX',200);
+  transformCss(box,'scale',0.5);
+  //读
+  console.log(transformCss(box,'scale'));
+  console.log(transformCss(box,'translateX'));
+
+
+
+</script>
+</html>

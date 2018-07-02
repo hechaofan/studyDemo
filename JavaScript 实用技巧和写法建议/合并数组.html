@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>合并数组</title>
+</head>
+<body>
+
+</body>
+<script>
+  //todo 方法一concat
+  var arr1 = [1,2,3]
+  var arr2 = [8,5,6]
+  var Arr = arr1.concat(arr2)
+  //todo 方法二for循环
+  var Arr1 = []
+  for (var i = 0; i < arr1.length; i++) {
+    Arr1.push(arr1[i])
+
+  }
+  for (var i = 0; i < arr2.length; i++) {
+    Arr1.push(arr2[i])
+
+  }
+  //todo 方法三:reduce
+  var Arr2 = arr2.reduce((coll,item) => {
+    coll.push(item)
+    return coll
+  },arr1)
+
+  //todo 方法四： push.apply
+  arr1.push.apply(arr1,arr2);
+  console.log(arr1)//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  //todo 方法五：...运算符
+  var arr3=[1,2]
+  var arr4=[3,5]
+  var arr5=[...arr3,...arr4]
+  console.log(arr5);
+</script>
+</html>

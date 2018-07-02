@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件委托</title>
+</head>
+<body>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+</body>
+<script>
+  var ul = document.querySelector('ul')
+  ul.addEventListener('click',function (ev) {
+    var ev = ev || window.event
+    var target = ev.target || ev.srcElement
+    console.log(typeof target.nodeName);
+    if (target.nodeName == 'LI') {
+      alert(target.innerHTML)
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Title</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      background-color: pink;
+    }
+    li {
+      text-align: center;
+      width: 25%;
+      height: 20px;
+      list-style: none;
+      background-color: deepskyblue;
+    }
+    .ts_seled {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<ul>
+  <li class="ts_seled">首页</li>
+  <li>购物车</li>
+  <li>订单</li>
+  <li>我的</li>
+</ul>
+</body>
+<script>
+  var lis = document.querySelectorAll('li')
+  for (let i = 0; i < lis.length; i++) {
+    lis[i].onclick = function (event) {
+      for (var j = 0; j < lis.length; j++) {
+        var li = lis[j]
+        if (li.className == 'ts_seled') {
+          li.className = ''
+        }
+      }
+      event.target.className = 'ts_seled'
+
+    }
+
+  }
+</script>
+</html>
